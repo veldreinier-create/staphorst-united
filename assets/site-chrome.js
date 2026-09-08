@@ -11,6 +11,16 @@
 (function () {
   "use strict";
 
+  /* ---------- Embed-stand: ?embed=1 = geen chrome ----------
+     Voor de United-embed op de echte clubsite (iframe op vvstaphorst.nl,
+     sept 2026): binnen andermans pagina horen onze topbar, footer,
+     sponsorwand, welkomstpopup en cookiebalk niet — dat wordt dubbele
+     navigatie en een toestemmingsbalk in een frame waar niemand op rekent.
+     Ook GA blijft dan bewust uit: zonder cookiebalk geen toestemming, dus
+     geen meting (AVG). De pagina zelf (hero, teller, namen) doet gewoon
+     alles; alleen dit gedeelde chrome slaan we over. */
+  if (/[?&]embed=1(&|$)/.test(location.search)) return;
+
   /* ---------- Club-links: één plek voor de hele site ---------- */
   var LINKS = {
     club: "https://www.vvstaphorst.nl",
