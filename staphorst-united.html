@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staphorst United: doe mee</title>
+<meta name="description" content="Staphorst United, het jeugdcollectief van vv Staphorst: 100 bedrijven, elk logo even groot, 500 euro per jaar en 100% voor de jeugd. Meedoen kost een appje.">
+<meta name="theme-color" content="#0053A0">
+<link rel="icon" href="assets/logos/vvs-crest.svg" type="image/svg+xml">
+<link rel="canonical" href="https://vvstaphorst-united.nl/staphorst-united.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Staphorst United: doe mee">
+<meta property="og:description" content="100 bedrijven, elk logo even groot, 100% voor de jeugd van vv Staphorst. Er kunnen er maar 100 op. Wie volgt?">
+<meta property="og:url" content="https://vvstaphorst-united.nl/staphorst-united.html">
+<meta property="og:image" content="https://vvstaphorst-united.nl/assets/deelkit/vvs-united-deelbeeld-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/poppins-900italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts-ds.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SportsOrganization","name":"Voetbalvereniging Staphorst","sport":"Voetbal","address":{"@type":"PostalAddress","streetAddress":"Parallelweg 27","postalCode":"7951 AT","addressLocality":"Staphorst","addressCountry":"NL"},"email":"sponsor@vvstaphorst.nl","url":"https://vvstaphorst-united.nl/staphorst-united.html"}
+</script>
+<style>
+  /* ============================================================
+     STAPHORST UNITED, de digitale kant van het gevelbord.
+
+     Bron: "172725 - CONCEPT - Staphorst United bord v3" (Alvasi,
+     aug 2026; 4500 x 2000 mm aan de gevel, QR in de voet wijst
+     naar /united). Wie hier binnenkomt heeft meestal net dat bord
+     of de one-pager gezien, op een telefoon. Daarom is dit ontwerp
+     mobiel-eerst en staat de knop "Ik doe mee" boven de vouw.
+
+     SIGNATUUR: de gele lijst. Het bord hangt in een gele omlijsting;
+     de pagina zit in diezelfde lijst (mobiel: gele randen langs het
+     scherm, desktop: een omkaderde plaat op een rustige gevel).
+     Verder uit het bord: kobalt #0053A0, geel #FFF200, de schuine
+     naad (#1C5DA6-diagonaal), de chevron-blokken, de voetband
+     "Staphorst voor Staphorst" en Poppins Black Italic als kopletter
+     (bevestigd door de ontwerper; OFL, zelf gehost via fonts-ds.css).
+
+     BEWUST NIET overgenomen (keuze Reinier, 12 aug 2026): het
+     100-vakkenraster. Dat is het bord zelf; hier volstaan de teller
+     en de namenlijst.
+
+     Eén bewegingsmoment: de tellerbalk vult zich bij binnenkomst
+     (alleen visueel, style.width staat meteen op de eindstand).
+     De sticky knoppenbalk verschijnt pas zodra de hero-knop uit
+     beeld is. Beide respecteren prefers-reduced-motion.
+
+     Het schildje op het bord ("ZOMER 2027 MEER") is een plaatshouder
+     voor een United-beeldmerk dat dit seizoen ontworpen wordt; tot
+     die tijd staat hier het clubcrest en is "Staphorst United" het
+     woordlogo (assets/logos/staphorst-united-woordlogo-*.png).
+
+     Topbar, sponsorwand, footer en meetbalk komen als op elke
+     hub-pagina van assets/site-chrome.js.
+     ============================================================ */
+  :root{
+    --kobalt:#0053A0;        /* bordblauw */
+    --kobalt-licht:#1C5DA6;  /* de diagonaal op het bord */
+    --kobalt-diep:#003C77;   /* schaduwkant */
+    --geel:#FFF200;          /* bordgeel */
+    --inkt:#12325B;          /* tekst op wit, uit de kobaltfamilie */
+    --wolk:#EDF3FA;          /* rustsectie */
+    --wolk-rand:#D7E2F0;
+    --gevel:#E4EBF4;         /* de muur waar het bord op hangt (desktop) */
+    --wit:#fff;
+    --wa:#25d366; --wa-donker:#053d21;
+    --font:'Poppins',Verdana,Tahoma,sans-serif;
+    --lijst:7px;             /* dikte van de gele lijst op mobiel */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--wit);color:var(--inkt);
+    font-family:var(--font);font-size:15.5px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;padding-bottom:88px;overflow-x:hidden}
+  img{max-width:100%}
+  a{color:inherit}
+  a:focus-visible,.btn:focus-visible,button:focus-visible{outline:3px solid var(--kobalt);outline-offset:2px}
+  .-kobalt a:focus-visible,.-kobalt .btn:focus-visible{outline-color:var(--geel)}
+
+  /* ============ DE GELE LIJST (signatuur) ============ */
+  .gevel{background:var(--gevel)}
+  .bordlijst{background:var(--wit);border-left:var(--lijst) solid var(--geel);
+    border-right:var(--lijst) solid var(--geel)}
+
+  /* ============ DE KOP, zoals het bord ============ */
+  .kop-zone{background:var(--kobalt);position:relative;overflow:hidden;color:#fff}
+  .kop-zone:before{content:"";position:absolute;inset:0;
+    background:linear-gradient(107deg,transparent 0 42%,var(--kobalt-licht) 42% 68%,transparent 68%);
+    opacity:.9;pointer-events:none}
+  .kop-zone>*{position:relative}
+
+  .kop{display:grid;grid-template-columns:auto 1fr;align-items:stretch}
+  .kop-crest{background:var(--geel);display:flex;align-items:center;
+    padding:12px 24px 12px 14px;
+    clip-path:polygon(0 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,0 100%)}
+  .kop-crest img{width:40px;height:auto;display:block}
+  .kop-titel{padding:14px 16px 12px;min-width:0;align-self:center}
+  .kicker{font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:#fff}
+  .kop-titel h1{font-weight:900;font-style:italic;text-transform:uppercase;
+    font-size:clamp(30px,9vw,42px);line-height:.98;margin-top:2px;color:#fff}
+  .kop-titel h1 .g{color:var(--geel)}
+  /* claimstrook: op mobiel een volle gele regel onder de titel, zoals de
+     voet van het bordblok; op breed scherm het chevron-blok rechts */
+  .kop-claim{grid-column:1 / -1;background:var(--geel);color:var(--kobalt);
+    display:flex;align-items:baseline;gap:10px;padding:8px 16px;
+    border-top:4px solid var(--kobalt)}
+  .kop-claim .p{font-weight:900;font-style:italic;font-size:24px;line-height:1}
+  .kop-claim .k{font-weight:900;font-style:italic;text-transform:uppercase;font-size:15px}
+  /* Optie B van het bordontwerp: fotostrook. Zie FOTO_IN_KOP onderaan. */
+  .kop-foto{display:none;overflow:hidden;min-width:0}
+  .kop-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+  body.met-foto .kop-foto{display:block;grid-column:1 / -1;height:128px}
+
+  /* teller + hero-knop in de blauwe plaat */
+  .plaat{padding:16px 16px 22px;max-width:1096px;margin:0 auto}
+  .teller .rij{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .teller .big{font-weight:900;font-style:italic;font-size:clamp(26px,7vw,36px);
+    line-height:1;font-variant-numeric:tabular-nums}
+  .teller .big b{color:var(--geel);font-weight:900}
+  .teller .lbl{font-weight:600;text-transform:uppercase;letter-spacing:.12em;
+    font-size:11.5px;color:#D9E6F5}
+  .barwrap{background:rgba(255,255,255,.22);height:14px;margin-top:10px;border-radius:2px;overflow:hidden}
+  .bar{background:var(--geel);height:100%;animation:vul 1s .15s ease-out backwards}
+  @keyframes vul{from{width:0}}
+  .teller .sub{color:#D9E6F5;font-size:13.5px;margin-top:9px}
+  .hero-cta{margin-top:14px}
+  .hero-cta .gerust{color:#D9E6F5;font-size:12.5px;margin-top:8px;text-align:center}
+
+  /* gele voetband, repeterend zoals op het bord */
+  .band{background:var(--geel);color:var(--kobalt);overflow:hidden;
+    border-top:5px solid var(--kobalt);border-bottom:5px solid var(--kobalt);padding:6px 0}
+  .band .spoor{display:flex;width:max-content;animation:schuif 32s linear infinite}
+  .band span{font-weight:900;font-style:italic;text-transform:uppercase;
+    font-size:clamp(14px,3.6vw,22px);white-space:nowrap;padding:0 16px}
+  .band span:after{content:"|";padding-left:16px;opacity:.5}
+  @keyframes schuif{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ============ SECTIES: volvlak, gescheiden door de schuine naad ============ */
+  .blok{padding:30px 20px 34px}
+  .blok .in{max-width:640px;margin:0 auto}
+  .-wit{background:var(--wit)}
+  .-wolk{background:var(--wolk)}
+  .-kobalt{background:var(--kobalt);color:#fff;position:relative;overflow:hidden}
+  .-kobalt:before{content:"";position:absolute;inset:0;
+    background:linear-gradient(107deg,transparent 0 52%,var(--kobalt-licht) 52% 78%,transparent 78%);
+    opacity:.8;pointer-events:none}
+  .-kobalt .in{position:relative}
+  .-geel{background:var(--geel);color:var(--kobalt)}
+
+  /* de naad: de diagonaal van het bord als sectiescheiding. Hoekwoorden
+     (to right bottom) leggen de scheidslijn exact van hoek tot hoek,
+     ongeacht de schermbreedte; een graden-gradient krijgt een knik. */
+  .naad{height:26px}
+  .naad-wit-wolk{background:linear-gradient(to right bottom,var(--wit) 49.85%,var(--wolk) 50.15%)}
+  .naad-wolk-kobalt{background:linear-gradient(to right bottom,var(--wolk) 49.85%,var(--kobalt) 50.15%)}
+  .naad-kobalt-geel{background:linear-gradient(to right bottom,var(--kobalt) 49.85%,var(--geel) 50.15%)}
+  .naad-geel-wit{background:linear-gradient(to right bottom,var(--geel) 49.85%,var(--wit) 50.15%)}
+
+  h2{font-weight:900;font-style:italic;text-transform:uppercase;
+    font-size:clamp(21px,5.6vw,26px);line-height:1.06;color:var(--kobalt);
+    display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  /* chevron-merkje uit de bordkop, wijst vooruit naar de knop */
+  h2:before{content:"";flex:0 0 auto;width:16px;height:15px;background:var(--geel);
+    clip-path:polygon(0 0,62% 0,100% 50%,62% 100%,0 100%)}
+  .-kobalt h2{color:#fff}
+  .-geel h2{color:var(--kobalt)}
+  .-geel h2:before{background:var(--kobalt)}
+  p{margin:9px 0}
+  .lead{font-size:16.5px}
+  .-kobalt p{color:#E7F0FA}
+
+  .punten{list-style:none;margin:12px 0 4px}
+  .punten li{position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--wolk)}
+  .punten li:last-child{border-bottom:0}
+  /* zeshoekje als opsommingsteken, knipoog naar de nummervakjes op het bord */
+  .punten li:before{content:"";position:absolute;left:2px;top:16px;width:16px;height:14px;
+    background:var(--kobalt);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
+  .punten b{color:var(--kobalt);font-weight:600}
+
+  .proof{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+  .chip{background:var(--wit);border:1px solid var(--wolk-rand);border-radius:3px;
+    padding:6px 10px;font-size:12px;font-weight:600;color:var(--kobalt);
+    text-transform:uppercase;letter-spacing:.02em}
+  .quote{border-left:5px solid var(--geel);padding:4px 0 4px 16px;margin:16px 0 4px;
+    color:var(--inkt);font-size:15.5px;font-style:italic}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0 4px}
+  .stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+    border-radius:3px;padding:13px 6px;text-align:center}
+  .stat .n{font-weight:900;font-style:italic;font-size:clamp(16px,4.6vw,22px);color:var(--geel);line-height:1.1}
+  .stat .l{font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+    font-size:10px;color:#D9E6F5;margin-top:4px}
+
+  .faq dt{font-weight:600;text-transform:uppercase;letter-spacing:.02em;
+    color:var(--kobalt);margin-top:14px;font-size:13.5px}
+  .faq dt:first-of-type{margin-top:0}
+  .faq dd{margin:2px 0 0}
+
+  /* knoppen: bordletter, geen tierlantijnen */
+  .cta{display:flex;flex-direction:column;gap:11px;margin:16px 0 4px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;
+    font-weight:900;font-style:italic;text-transform:uppercase;
+    border-radius:3px;padding:15px;font-size:16px;line-height:1.1;
+    transition:transform .15s ease,box-shadow .15s ease}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,60,119,.25)}
+  .btn:active{transform:translateY(0);box-shadow:none}
+  .btn.wa{background:var(--wa);color:var(--wa-donker)}
+  /* secundaire knop: bewust lichter dan de groene, één actie is de baas */
+  .btn.blauw{background:transparent;color:var(--kobalt);border:2px solid var(--kobalt)}
+  .schaars{font-size:14.5px;margin-top:12px}
+  .schaars b{font-weight:600}
+  .btn small{display:block;font-style:normal;font-weight:400;text-transform:none;
+    font-size:12.5px;opacity:.92;margin-top:2px}
+  .btn .ico{width:22px;height:22px;flex:0 0 auto}
+  .alt{font-size:13.5px;text-align:center;margin:14px 0 0}
+  .alt a{text-decoration:underline;font-weight:600}
+
+  footer{color:var(--inkt);font-size:13px;text-align:center;padding:26px 0 8px}
+
+  /* sticky knoppenbalk: verschijnt pas als de hero-knop uit beeld is */
+  .sticky{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);
+    border-top:4px solid var(--geel);box-shadow:0 -4px 16px rgba(0,60,119,.16);
+    padding:9px 14px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);z-index:50}
+  .sticky .in{max-width:640px;margin:0 auto;display:flex;gap:8px}
+  .sticky .btn{flex:1;padding:12px 8px;font-size:13.5px}
+  body.js-sticky .sticky{transform:translateY(110%);transition:transform .25s ease}
+  body.js-sticky .sticky.tonen{transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .bar{animation:none}
+    .band .spoor{animation:none}
+    .btn{transition:none}
+    .btn:hover,.btn:active{transform:none}
+    body.js-sticky .sticky{transition:none}
+  }
+
+  /* ============ BREDER SCHERM: het bord aan de muur ============ */
+  @media(min-width:760px){
+    .kop{grid-template-columns:auto 1fr auto}
+    .kop-crest{padding:14px 30px 14px 18px;
+      clip-path:polygon(0 0,calc(100% - 26px) 0,100% 50%,calc(100% - 26px) 100%,0 100%)}
+    .kop-crest img{width:52px}
+    .kop-titel{padding:18px 20px}
+    .kop-titel h1{font-size:clamp(40px,5.4vw,58px)}
+    .kicker{font-size:13px}
+    .kop-claim{grid-column:auto;border-top:0;flex-direction:column;align-items:flex-end;
+      justify-content:center;gap:0;text-align:right;padding:12px 18px 12px 38px;
+      clip-path:polygon(26px 0,100% 0,100% 100%,26px 100%,0 50%)}
+    .kop-claim .p{font-size:clamp(28px,3.4vw,42px)}
+    .kop-claim .k{font-size:clamp(14px,1.8vw,22px);line-height:1.05}
+    body.met-foto .kop{grid-template-columns:auto minmax(0,1.05fr) minmax(0,1fr) auto}
+    body.met-foto .kop-foto{grid-column:auto;height:auto;align-self:stretch}
+    body.met-foto .kop-foto img{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 26%);
+      mask-image:linear-gradient(90deg,transparent 0,#000 26%)}
+    body.met-foto .kop-titel h1{font-size:clamp(30px,3.6vw,44px)}
+    .plaat{display:grid;grid-template-columns:1fr auto;gap:12px 28px;align-items:center;
+      padding:18px 22px 24px}
+    .teller{min-width:0}
+    .hero-cta{margin-top:0;min-width:270px}
+    .blok{padding:44px 24px 48px}
+    .naad{height:34px}
+    .cta{flex-direction:row}
+    .cta .btn{flex:1}
+  }
+  @media(min-width:1000px){
+    .gevel{padding:30px 24px 38px}
+    .bordlijst{max-width:1160px;margin:0 auto;border:10px solid var(--geel);
+      box-shadow:0 24px 60px rgba(0,40,90,.22)}
+  }
+</style>
+</head>
+<body>
+
+<div class="gevel">
+<div class="bordlijst">
+
+  <!-- De kop, zoals het bord: crest-chevron, titel, claim. -->
+  <header class="kop-zone">
+    <div class="kop">
+      <div class="kop-crest">
+        <img src="assets/logos/vvs-crest.svg" alt="Clublogo vv Staphorst" width="52" height="62">
+      </div>
+      <div class="kop-titel">
+        <span class="kicker">Jeugdcollectief</span>
+        <h1><span class="g">Staphorst</span> United</h1>
+      </div>
+      <!-- Optie B van het bordontwerp. Zichtbaar zodra FOTO_IN_KOP aan staat. -->
+      <div class="kop-foto">
+        <img src="assets/photos/kampioenen-2026.jpg" alt="Jeugdspelers van vv Staphorst vieren de titel in geel-blauw shirt" loading="lazy">
+      </div>
+      <!-- "voor de jeugd", niet "naar de jeugd" (Rutger, aug 2026): "naar"
+           beschrijft een geldstroom, "voor" een verbond. Drukt op
+           betrokkenheid in plaats van op de financiële verplichting; die
+           laatste ligt vast bij het bestuur en staat in de praktische laag. -->
+      <div class="kop-claim">
+        <span class="p">100%</span>
+        <span class="k">voor de jeugd</span>
+      </div>
+    </div>
+
+    <div class="plaat">
+      <div class="teller">
+        <div class="rij"><span class="lbl">Plekken vergeven</span><span class="lbl">Nog vrij</span></div>
+        <div class="rij">
+          <span class="big"><b id="t-vergeven">23</b> / <span id="t-totaal">100</span></span>
+          <span class="big" id="t-vrij">77</span>
+        </div>
+        <div class="barwrap" aria-hidden="true"><div class="bar" id="t-bar" style="width:23%"></div></div>
+        <p class="sub">De eerste <span id="t-sub">23</span> staan er al, schouder aan schouder. Er kunnen er maar 100 op. Wie volgt?</p>
+      </div>
+      <div class="hero-cta">
+        <!-- De href is het vangnet zonder JavaScript; het script onderaan
+             zet hem opnieuw vanuit NUMMER (de enige plek om te wisselen). -->
+        <a class="btn wa" id="cta-hero" data-wa="meedoen" href="https://wa.me/31642943118?text=Ik%20wil%20meedoen%20met%20Staphorst%20United" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 32 32" fill="#053d21" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.9 5 17 5 15 5 9 9.9 4.9 16 4.9S27 9 27 15s-4.9 9.8-11 9.8zm5.5-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.8.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg>
+          <span>Ik doe mee<small>Appje staat klaar, versturen is genoeg</small></span>
+        </a>
+        <p class="gerust">Geen contract. Wij nemen contact op en regelen de rest.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="band" aria-hidden="true">
+    <div class="spoor">
+      <span>Staphorst voor Staphorst</span><span>Staphorst voor Staphorst</span><span>Staphorst voor Staphorst</span>
+      <span>Staphorst voor Staphorst</span><span>Staphorst voor Staphorst</span><span>Staphorst voor Staphorst</span>
+    </div>
+  </div>
+
+  <main>
+    <section class="blok -wit">
+      <div class="in">
+        <h2>Wat is het?</h2>
+        <p class="lead">Staphorster ondernemers dragen samen de jeugd van de club. Groot en klein, van de kleinste zzp'er tot de grootste werkgever, allemaal even groot op één bord.</p>
+        <ul class="punten">
+          <li><b>500 euro per jaar (excl. btw),</b> voor elk bedrijf gelijk. Elk logo even groot.</li>
+          <li><b>100% voor de jeugd,</b> geoormerkt en transparant verantwoord.</li>
+          <li><b>Geen contract, geen gedoe.</b> Je doet mee omdat je erbij wilt horen.</li>
+          <li><b>Plek voor 100.</b> Wie nu instapt is oprichter van het eerste uur.</li>
+        </ul>
+        <p>Het idee komt uit het dorp zelf: een groep Staphorster ondernemers zette het collectief samen op. De sponsorcommissie bouwt het met hen verder uit.</p>
+      </div>
+    </section>
+
+    <div class="naad naad-wit-wolk" aria-hidden="true"></div>
+
+    <section class="blok -wolk">
+      <div class="in">
+        <h2>Wie gingen je voor</h2>
+        <p class="quote">Op dit bord staan we allemaal even groot. Want de jeugd kijkt niet naar wie het meeste betaalt. Die kijkt naar wie er staat.</p>
+        <p>Alle <span id="t-sub2">23</span>, in de volgorde van het bord. Van de eenmanszaak tot het grootste familiebedrijf.</p>
+        <!-- De namen komen uit assets/united-deelnemers.js, bordvolgorde
+             (bewust niet op alfabet, niemand uitgelicht). Beheerder wijzigt
+             een naam via beheer/united-editor.html (of met de hand in dat
+             bestand); deze pagina tekent zichzelf opnieuw. De teller
+             bovenaan telt mee, dat gaat vanzelf. -->
+        <div class="proof" id="proof"></div>
+      </div>
+    </section>
+
+    <div class="naad naad-wolk-kobalt" aria-hidden="true"></div>
+
+    <section class="blok -kobalt">
+      <div class="in">
+        <h2>Waarom de jeugd?</h2>
+        <p>De jeugd is de club van morgen, en in Staphorst betekent dat iets. Hier groeit talent op het veld zoals de bedrijven groeien in het dorp: van onderaf, generatie op generatie. En juist wie vroeger zelf langs de lijn bleef, gunt zijn kinderen die plek nu des te meer.</p>
+        <p>De club kiest daar nu vol voor. Er is weer een jeugdbestuur, de jongste teams trainen met een professionele aanpak (FrontRow), en de nieuwe velden en kunstgrasvelden liggen er. De jeugd staat voorop.</p>
+        <p>Staphorst United is het antwoord van de ondernemers. Honderd bedrijven die er samen en structureel geld naast zetten, alleen voor de jeugd. Zodat de opleiding kan doorpakken, en ambitie nooit op geld hoeft te wachten.</p>
+        <div class="stats">
+          <!-- Geen bedragen in United-communicatie behalve de 500 euro
+               (besluit Reinier, sep 2026); de opbrengst-tegel is vervangen
+               door de gelijkheidsgedachte. -->
+          <div class="stat"><div class="n">100</div><div class="l">bedrijven, allemaal even groot</div></div>
+          <div class="stat"><div class="n">100%</div><div class="l">voor de jeugd</div></div>
+          <div class="stat"><div class="n">2027</div><div class="l">jeugd in het embleem</div></div>
+        </div>
+        <p>En in 2027 draagt de hele jeugd van Staphorst een shirt met het teken van het collectief. Dan zie je wat we samen hebben neergezet.</p>
+      </div>
+    </section>
+
+    <div class="naad naad-kobalt-geel" aria-hidden="true"></div>
+
+    <section class="blok -geel">
+      <div class="in">
+        <h2>Sponsor worden?</h2>
+        <p>Geen formulier, geen gedoe. Eén appje naar de sponsorcommissie en wij regelen de rest: een plek op het bord, geloot, en een betaalverzoek. Klaar.</p>
+        <!-- Echte schaarste, geen verkooppraat: er is één bord en de teller
+           klopt (JS vult de cijfers uit dezelfde bron als de teller boven). -->
+        <p class="schaars"><b><span id="t-sub3">23</span> staan er al.</b> Er kunnen er nog <span id="t-vrij2">77</span> bij, daarna is het bord vol.</p>
+        <div class="cta">
+          <a class="btn wa" data-wa="meedoen" href="https://wa.me/31642943118?text=Ik%20wil%20meedoen%20met%20Staphorst%20United" target="_blank" rel="noopener">
+            <svg class="ico" viewBox="0 0 32 32" fill="#053d21" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.9 5 17 5 15 5 9 9.9 4.9 16 4.9S27 9 27 15s-4.9 9.8-11 9.8zm5.5-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.8.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg>
+            <span>Ik doe mee<small>Stuur een appje, bericht staat klaar</small></span>
+          </a>
+          <a class="btn blauw" data-wa="aanbrengen" href="https://wa.me/31642943118?text=Ik%20wil%20een%20bedrijf%20aanbrengen%20voor%20Staphorst%20United%20(mag%20ook%20mijn%20werkgever%20zijn)" target="_blank" rel="noopener">
+            <svg class="ico" viewBox="0 0 32 32" fill="#0053A0" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.7 6L4 29l8.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.9 5 17 5 15 5 9 9.9 4.9 16 4.9S27 9 27 15s-4.9 9.8-11 9.8zm5.5-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.8.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg>
+            <span>Ik breng iemand aan<small>Ook je eigen werkgever, wij bellen warm</small></span>
+          </a>
+        </div>
+        <!-- 06 42 94 31 18 is een WhatsApp-nummer waarmee niet gebeld kan
+             worden; bellen gaat rechtstreeks naar de commissieleden. -->
+        <p class="alt">Geen WhatsApp? Mail <a href="mailto:sponsor@vvstaphorst.nl">sponsor@vvstaphorst.nl</a> of bel een van ons:
+          Harm Huls <a href="tel:+31623290612">06 23 29 06 12</a>,
+          Klaas Schra <a href="tel:+31613741487">06 13 74 14 87</a>,
+          Reinier Veld <a href="tel:+31634332772">06 34 33 27 72</a>,
+          Marcel Kruidhof <a href="tel:+31611207235">06 11 20 72 35</a>,
+          Klaas Kooiker <a href="tel:+31636534623">06 36 53 46 23</a>.</p>
+      </div>
+    </section>
+
+    <div class="naad naad-geel-wit" aria-hidden="true"></div>
+
+    <section class="blok -wit">
+      <div class="in">
+        <h2>Kort de vragen</h2>
+        <dl class="faq">
+          <dt>Wat kost het?</dt><dd>500 euro per jaar, exclusief btw, voor elk bedrijf gelijk.</dd>
+          <!-- Vraag ging van "Waar gaat het heen?" (geldstroom) naar "Wat
+               maakt het mogelijk?" (doel). Bewust geen concrete bestedingen
+               beloven — dat legt het bestuur vast; het jeugdbestuur kiest. -->
+          <dt>Wat maakt het mogelijk?</dt><dd>Extra's voor de jeugdopleiding, 100% voor de jeugd. Het jeugdbestuur zet het in waar de jeugd er het meest aan heeft, transparant verantwoord.</dd>
+          <dt>Moet ik mijn bestaande sponsoring aanpassen?</dt><dd>Nee. Dit staat er los van en komt erbovenop.</dd>
+          <dt>Zit ik ergens aan vast?</dt><dd>Nee, geen contract. Maar er zijn maar 100 plekken, en vol is vol.</dd>
+          <dt>Kies ik mijn plek?</dt><dd>Nee, de plekken worden geloot. Iedereen gelijk.</dd>
+          <dt>Mag ik meedoen van buiten Staphorst?</dt><dd>Ja, zolang je Staphorst een warm hart toedraagt. Het blijft voor Staphorst.</dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <div class="band" aria-hidden="true">
+    <div class="spoor">
+      <span>Staphorst voor Staphorst</span><span>Staphorst voor Staphorst</span><span>Staphorst voor Staphorst</span>
+      <span>Staphorst voor Staphorst</span><span>Staphorst voor Staphorst</span><span>Staphorst voor Staphorst</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- Vangnet-footer: site-chrome.js vervangt deze door de uniforme hub-footer. -->
+<footer>
+  <div class="in" style="max-width:640px;margin:0 auto;padding:0 20px">
+    vv Staphorst · Sponsorcommissie · sponsor@vvstaphorst.nl<br>
+    Staphorst voor Staphorst.
+  </div>
+</footer>
+
+<div class="sticky">
+  <div class="in">
+    <a class="btn wa" data-wa="meedoen" href="https://wa.me/31642943118?text=Ik%20wil%20meedoen%20met%20Staphorst%20United" target="_blank" rel="noopener">Ik doe mee</a>
+    <a class="btn blauw" data-wa="aanbrengen" href="https://wa.me/31642943118?text=Ik%20wil%20een%20bedrijf%20aanbrengen%20voor%20Staphorst%20United%20(mag%20ook%20mijn%20werkgever%20zijn)" target="_blank" rel="noopener">Iemand aanbrengen</a>
+  </div>
+</div>
+
+<script src="assets/united-deelnemers.js"></script>
+<script src="assets/vvs-live.js"></script>
+<script>
+/* ============================================================
+   INSTELLINGEN, het enige blok dat je aanpast.
+
+   - NUMMER: WhatsApp-nummer zonder plus en zonder eerste 0.
+     Nu: sponsorcommissie (06 42 94 31 18).
+   - FOTO_IN_KOP: false = bordoptie A (kale kop), true = bordoptie B
+     (fotostrook naast de titel). Zet dit gelijk aan het bord dat
+     gedrukt wordt, dan komt de scanner op hetzelfde beeld uit.
+   - TOTAAL: het aantal plekken op het bord. Blijft 100.
+
+   De deelnemerslijst zelf staat NIET hier, maar in
+   assets/united-deelnemers.js (beheerd via beheer/united-editor.html).
+   De tellerstand houd je NIET met de hand bij: hij telt die lijst,
+   teller en balk rekenen zichzelf uit.
+   ============================================================ */
+const NUMMER = "31642943118";
+const FOTO_IN_KOP = false;
+const TOTAAL = 100;
+
+const BERICHT = {
+  meedoen: "Ik wil meedoen met Staphorst United",
+  aanbrengen: "Ik wil een bedrijf aanbrengen voor Staphorst United (mag ook mijn werkgever zijn)"
+};
+
+document.querySelectorAll("a[data-wa]").forEach(function (a) {
+  a.href = "https://wa.me/" + NUMMER + "?text=" + encodeURIComponent(BERICHT[a.dataset.wa]);
+  /* De WhatsApp-klik IS de conversie van deze pagina. Meet hem als
+     GA-event (zelfde patroon als lead_submit op de formulieren; meet
+     alleen als de bezoeker toestemming gaf, dan bestaat window.gtag). */
+  a.addEventListener("click", function () {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "wa_click", {
+        bericht: a.dataset.wa,
+        plek: a.closest(".sticky") ? "sticky" : (a.id === "cta-hero" ? "hero" : "sponsor-worden")
+      });
+    }
+  });
+});
+/* De aparte bel-link is per sep 2026 vervallen: met het WhatsApp-nummer
+   kan niet gebeld worden. Bellen gaat rechtstreeks naar de vijf
+   commissieleden; die nummers staan als gewone tel-links in de HTML
+   (blok "Sponsor worden?") en volgen NUMMER dus bewust niet. */
+
+if (FOTO_IN_KOP) document.body.classList.add("met-foto");
+
+/* ---------- Namen + teller tekenen, herbruikbaar ----------
+   Draait twee keer: meteen met de statische data uit
+   assets/united-deelnemers.js (instant, werkt altijd), en opnieuw
+   zodra VVS_LIVE een verse lijst van de Function terugkrijgt die
+   afwijkt (een beheerder heeft iets gewijzigd sinds deze pagina
+   gebouwd is). Bewust met createElement (geen innerHTML-string):
+   een bedrijfsnaam met een " of < erin mag de pagina nooit kunnen
+   breken, ook al komt de data van achter een wachtwoord. */
+function tekenDeelnemers(deelnemers) {
+  const proof = document.getElementById("proof");
+  proof.innerHTML = "";
+  deelnemers.forEach(function (d) {
+    const chip = document.createElement("span");
+    chip.className = "chip";
+    chip.textContent = d.naam;
+    proof.appendChild(chip);
+  });
+
+  const vergeven = deelnemers.length;
+  const vrij = Math.max(0, TOTAAL - vergeven);
+  const pct = Math.max(0, Math.min(100, Math.round(vergeven / TOTAAL * 100)));
+  document.getElementById("t-vergeven").textContent = vergeven;
+  document.getElementById("t-totaal").textContent = TOTAAL;
+  document.getElementById("t-vrij").textContent = vrij;
+  document.getElementById("t-sub").textContent = vergeven;
+  document.getElementById("t-sub2").textContent = vergeven;
+  document.getElementById("t-sub3").textContent = vergeven;
+  document.getElementById("t-vrij2").textContent = vrij;
+  /* style.width staat meteen op de eindstand (meetbaar en zonder JS-races);
+     de vul-animatie bij binnenkomst is puur visueel (CSS @keyframes). */
+  document.getElementById("t-bar").style.width = pct + "%";
+}
+
+const DEELNEMERS = window.VVS_UNITED_DEELNEMERS || [];
+tekenDeelnemers(DEELNEMERS);
+
+if (window.VVS_LIVE) {
+  VVS_LIVE.volg("united", DEELNEMERS, function (verse) { tekenDeelnemers(verse); });
+}
+
+/* ---------- Sticky balk: pas tonen als de hero-knop uit beeld is ----------
+   Zonder IntersectionObserver (of zonder JS) staat de balk er gewoon altijd;
+   dat is het vangnet, geen fout. */
+(function () {
+  var hero = document.getElementById("cta-hero");
+  var sticky = document.querySelector(".sticky");
+  if (!hero || !sticky || !("IntersectionObserver" in window)) return;
+  document.body.classList.add("js-sticky");
+  new IntersectionObserver(function (entries) {
+    sticky.classList.toggle("tonen", !entries[0].isIntersecting);
+  }, { rootMargin: "-56px 0px 0px 0px" }).observe(hero);
+})();
+</script>
+<script src="assets/site-chrome.js" defer></script>
+
+</body>
+</html>
