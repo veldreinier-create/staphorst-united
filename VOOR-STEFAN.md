@@ -36,7 +36,7 @@ Goed om te weten:
 
 Kan er op de hosting een eigen map met bestanden staan (dus niet alleen CMS-pagina's)?
 
-1. Vraag Reinier om toegang tot de GitHub-repo **github.com/veldreinier-create/staphorst-united** en download de ZIP (knop Code, Download ZIP).
+1. Pak de kant-en-klare ZIP die Reinier meestuurt (`..._united-site-kopie-stefan_v1.zip`) en pak hem uit. Geen ZIP bij de hand? Dezelfde bestanden staan in de GitHub-repo **github.com/veldreinier-create/staphorst-united** (toegang via Reinier, knop Code, Download ZIP).
 2. Upload `staphorst-united.html` plus de complete map `assets/` naar bijvoorbeeld `vvstaphorst.nl/united/`, mapstructuur intact.
 3. Klaar. De pagina merkt zelf dat hij op de clubsite draait: menu- en footerlinks wijzen naar de hub en de data loopt live mee.
 
