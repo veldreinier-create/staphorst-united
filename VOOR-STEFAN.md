@@ -6,6 +6,8 @@ Voor: Stefan Spiker · Van: Reinier Veld (sponsorcommissie) · 8 september 2026
 
 De Staphorst United-pagina als subpagina op vvstaphorst.nl. Het beheer blijft centraal: de deelnemerslijst en de sponsordata worden op één plek bijgehouden (de beheeromgeving van vvstaphorst-united.nl) en elke kopie leest daar automatisch uit. Jij hoeft dus nooit namen over te typen of bij te werken.
 
+**Uitgangspunt van de sponsorcommissie:** de pagina moet altijd direct aan te passen zijn zonder dat er iemand tussen zit. Daarom is route A de norm: na het eenmalig plakken van de embed loopt élke wijziging (tekst, foto, lijst) vanzelf mee op de clubsite. Route B is de uitzondering, alleen voor als A technisch echt niet kan.
+
 ## Hoe het systeem werkt (1 minuut lezen)
 
 Pagina en data zijn gescheiden. De pagina haalt de teller, de namenlijst en de sponsorwand live op bij `https://vvstaphorst-united.nl/vvs-data/...`. Publiceert de sponsorcommissie een nieuwe deelnemer, dan staat die vanzelf ook op de clubsite-versie. Alleen als de página zelf verandert (tekst, foto, opzet) is er iets nodig, en bij route A hieronder zelfs dan niets.
@@ -32,9 +34,9 @@ Goed om te weten:
 - De United-site staat insluiten alleen toe vanaf vvstaphorst.nl (en VoetbalAssist-previews). Op elke andere site blijft het frame bewust leeg.
 - Verwijdert VoetbalAssist de iframe toch bij het opslaan? Vraag hun support naar de module voor eigen HTML/embeds, of kies route B of C.
 
-## Route B · volledige kopie (alleen bij echte webruimte)
+## Route B · volledige kopie (alleen als route A echt niet kan)
 
-Kan er op de hosting een eigen map met bestanden staan (dus niet alleen CMS-pagina's)?
+Let op: bij deze route vraagt elke paginawijziging een nieuwe upload, en dan zit de webmaster dus wél tussen de sponsorcommissie en de site. Alleen kiezen als de embed technisch onmogelijk blijkt. Voorwaarde: de hosting kan een eigen map met bestanden aan (dus niet alleen CMS-pagina's).
 
 1. Pak de kant-en-klare ZIP die Reinier meestuurt (`..._united-site-kopie-stefan_v1.zip`) en pak hem uit. Geen ZIP bij de hand? Dezelfde bestanden staan in de GitHub-repo **github.com/veldreinier-create/staphorst-united** (toegang via Reinier, knop Code, Download ZIP).
 2. Upload `staphorst-united.html` plus de complete map `assets/` naar bijvoorbeeld `vvstaphorst.nl/united/`, mapstructuur intact.
