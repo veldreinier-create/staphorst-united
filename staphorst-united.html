@@ -188,6 +188,8 @@
     text-transform:uppercase;letter-spacing:.02em}
   .quote{border-left:5px solid var(--geel);padding:4px 0 4px 16px;margin:16px 0 4px;
     color:var(--inkt);font-size:15.5px;font-style:italic}
+  .kanaalvolg{margin:14px 0 0;font-size:14.5px}
+  .kanaalvolg a{text-decoration:underline;font-weight:700;color:var(--kobalt)}
 
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0 4px}
   .stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
@@ -361,6 +363,10 @@
              bestand); deze pagina tekent zichzelf opnieuw. De teller
              bovenaan telt mee, dat gaat vanzelf. -->
         <div class="proof" id="proof"></div>
+        <!-- Kanaal-volglink: bewust een tekstlink en geen knop, zodat de
+             WhatsApp-CTA de enige primaire actie van de pagina blijft. -->
+        <p class="kanaalvolg">Elke nieuwe naam op het bord melden we op ons WhatsApp-kanaal.
+          <a id="kanaal-link" href="https://whatsapp.com/channel/0029VbDavNbGzzKIzrdMPq2y" target="_blank" rel="noopener">Volg de teller</a>.</p>
       </div>
     </section>
 
@@ -499,6 +505,13 @@ document.querySelectorAll("a[data-wa]").forEach(function (a) {
       });
     }
   });
+});
+/* Kanaal-volglink meten, zelfde consentpatroon als wa_click. */
+var kanaalLink = document.getElementById("kanaal-link");
+if (kanaalLink) kanaalLink.addEventListener("click", function () {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "kanaal_volgen", { plek: "wie-gingen-je-voor" });
+  }
 });
 /* De aparte bel-link is per sep 2026 vervallen: met het WhatsApp-nummer
    kan niet gebeld worden. Bellen gaat rechtstreeks naar de vijf

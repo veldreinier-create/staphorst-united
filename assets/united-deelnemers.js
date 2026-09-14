@@ -52,4 +52,10 @@ window.VVS_UNITED_DEELNEMERS = [
   { naam: "BMS Kunststofkozijnen" },
   { naam: "Installatie kooiker Meppel" },
   { naam: "Rene Russcher" },
+  { naam: "Wentink Procesoptimalisatie" },
+  { naam: "Supportersclub VVS" },
+  { naam: "Donateur groep ^Anoniem" },
+  { naam: "Finanxe" },
+  { naam: "Kooiker Groep" },
+  { naam: "Hulst Kitwerken" },
 ];
