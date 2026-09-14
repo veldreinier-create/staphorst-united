@@ -238,6 +238,9 @@
     /* Donkere tegel voor logo's die op wit wegvallen of een donkere baked-in achtergrond hebben. */
     ".logowall .tile.donker{background:#0e2350;border-color:#0e2350}" +
     ".logowall .tile.donker img{filter:none;opacity:1}" +
+    /* Potlood-tegel: sponsor nog niet definitief. Grijs, vervaagd, blijft ook bij hover grijs. */
+    ".logowall .tile.potlood{border-style:dashed;opacity:.5}" +
+    ".logowall .tile.potlood img,.logowall .tile.potlood:hover img{filter:grayscale(1);opacity:.35}" +
     /* Fallback-tegel zonder logo: crest-watermerk + naam + diagonaal geel trots-lint */
     ".logowall .tile.vvs-fb{position:relative;overflow:hidden}" +
     ".logowall .tile.vvs-fb .fb-crest{position:absolute;inset:0;background-position:center;background-repeat:no-repeat;background-size:52px;opacity:.13}" +
@@ -489,8 +492,9 @@
         '<span class="fb-naam">' + s.naam + '</span><span class="fb-lint">GEEL-BLAUW TROTS</span>';
     // donker: logo met een donkere achtergrond of een lichte tekst die op wit
     // wegvalt (bv. Mussche, Stiptwerk, Luyckx, LK) krijgt een donkere tegel.
-    var klasse = "tile" + (fb ? " vvs-fb" : "") + (s.donker && s.logo ? " donker" : "");
-    if (s.web) {
+    // potlood: sponsor nog niet definitief; vervaagde tegel zonder link.
+    var klasse = "tile" + (fb ? " vvs-fb" : "") + (s.donker && s.logo ? " donker" : "") + (s.potlood ? " potlood" : "");
+    if (s.web && !s.potlood) {
       return '<a class="' + klasse + '" href="' + s.web + '" target="_blank" rel="noopener" title="' + s.naam + '" style="text-decoration:none;color:#3A4356">' + binnen + "</a>";
     }
     return '<div class="' + klasse + '" title="' + s.naam + '">' + binnen + "</div>";
